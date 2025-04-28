@@ -1,3 +1,4 @@
+// Firebaseの設定（あなたの情報）
 const firebaseConfig = {
   apiKey: "AIzaSyDsD5uVHdUBjEwW9538pnfJKmcqxpX5nXk",
   authDomain: "kadai-698fe.firebaseapp.com",
@@ -8,39 +9,23 @@ const firebaseConfig = {
   measurementId: "G-Z05XF4LX2F"
 };
 
-// Firebaseの初期化
-const app = firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// ボタンとカウント表示を取得
-const countButton = document.getElementById('countButton');
-const counterDisplay = document.getElementById('counterDisplay');
+// ボタンと表示を取得
+const button = document.getElementById('countButton');
+const display = document.getElementById('counterDisplay');
 
-// Firestoreからカウントを取得
-let count = 0;
-const countRef = db.collection('counter').doc('countData');
-
-// Firestoreからカウントのデータを取得して表示
-countRef.get().then((doc) => {
-    if (doc.exists) {
-        count = doc.data().value; // Firestoreのカウント値を取得
-        counterDisplay.textContent = count; // 表示を更新
-    } else {
-        console.log("No such document!");
-    }
+// Firestoreのデータにリアルタイムで反応
+const ref = db.collection('counter').doc('countData');
+ref.onSnapshot(doc => {
+  if (doc.exists) {
+    display.textContent = doc.data().value;
+  }
 });
 
-// ボタンクリック時にカウントを増やし、Firestoreに保存する
-countButton.addEventListener('click', () => {
-    count++;  // カウントを1増やす
-    counterDisplay.textContent = count;  // 表示を更新
-
-    // Firestoreに新しいカウント値を保存
-    countRef.set({
-        value: count
-    }).then(() => {
-        console.log("カウントが保存されました!");
-    }).catch((error) => {
-        console.error("エラーが発生しました: ", error);
-    });
+// クリックで＋1して保存
+button.addEventListener('click', () => {
+  let count = Number(display.textContent) + 1;
+  ref.set({ value: count });
 });
