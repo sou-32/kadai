@@ -5,9 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="main.css">
-    <script src="main.js"></script>
+
+     <!-- Firebase SDK -->
+     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+
+     <script src="app.js"></script>
 </head>
 <body class="red">
     <p>こんにちは。これは思考実験です(?)</p>
+
+    <button id="countButton">カウント</button>
+    
+    <div class="counter" id="counterDisplay">0</div>
+
 </body>
 </html>
