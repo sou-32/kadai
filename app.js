@@ -8,10 +8,10 @@ const firebaseConfig = {
   appId: "1:567535947359:web:d1e1088c3e4a96ae6c95ea",
   measurementId: "G-Z05XF4LX2F"
 };
-
+//初期化
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-
+//----------------------------------------
 // ボタンと表示を取得
 const button = document.getElementById('countButton');
 const display = document.getElementById('counterDisplay');
