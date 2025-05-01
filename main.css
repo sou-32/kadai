@@ -1,7 +1,20 @@
-.red{
-    color: red;
+/*フォント*/
+@font-face {
+    font-family: "myfont"; /*任意のフォントファミリー名でOK*/
+    src: url("font/NotoSansJP-VariableFont_wght.ttf") format("truetype"); /*fontがあるパスを書いて、formatを指定*/
+    font-display: swap; /*ダウンロード状況に応じてフォントの表示を変える
+(「swap」はWebフォントが読み込まれるまでフォールバックフォントで表示し、読み込まれた時点で置き換えます。)*/
+  }
+  .ttl{
+    font-size: 20px;
+    font-family: "myfont",sans-serif; /*上で設定したフォントファミリー名*/
+  }
+.ash{
+    color: #2B475E;
 }
-
+body{
+  background: #ffffff;
+}
 button {
     padding: 10px 20px;
     font-size: 16px;
@@ -10,4 +23,11 @@ button {
 .counter {
     margin-top: 20px;
     font-size: 24px;
+}
+
+.surround-title{
+  
+  border: 90px solid #F2F2FF;
+  border-radius: 10px;
+  padding: 20px;
 }
